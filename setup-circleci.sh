@@ -18,7 +18,7 @@ drupal8ci_install() {
 	# Turn on xtracing and error detection so users know what's happening.
 	set -ex
 	# Download and extract CircleCI configuration and sample tests.
-	wget -O "$tmpdir/master.zip" https://github.com/Lullabot/drupal8ci/archive/master.zip
+	wget -O "$tmpdir/master.zip" https://github.com/lcatlett/drupal8ci/archive/master.zip
 	unzip "$tmpdir/master.zip" 'drupal8ci-master/dist/circleci/*' -d "$tmpdir"
 	rsync -va --ignore-existing "$tmpdir/drupal8ci-master/dist/circleci/" .
 	unzip "$tmpdir/master.zip" 'drupal8ci-master/dist/common/*' -d "$tmpdir"
@@ -27,12 +27,12 @@ drupal8ci_install() {
 	# Add development dependencies to run the CircleCI jobs.
 	#
 	# behat/mink-extension is pinned until https://github.com/Behat/MinkExtension/pull/311 gets fixed.
-	composer require --dev \
-		behat/mink-extension:v2.2 \
-		behat/mink-selenium2-driver:^1.3 \
-		bex/behat-screenshot \
-		drupal/coder:^8.2 \
-		drupal/drupal-extension:master-dev
+	# composer require --dev \
+	# 	behat/mink-extension:v2.2 \
+	# 	behat/mink-selenium2-driver:^1.3 \
+	# 	bex/behat-screenshot \
+	# 	drupal/coder:^8.2 \
+	# 	drupal/drupal-extension:master-dev
 }
 
 #######################################
